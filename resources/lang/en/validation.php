@@ -144,6 +144,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'identifier' => 'Identifier',
+        'set_name' => 'Set',
+    ],
 
 ];

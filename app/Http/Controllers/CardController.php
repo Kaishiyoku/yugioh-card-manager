@@ -3,10 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
+use App\Models\Set;
 use Illuminate\Http\Request;
 
 class CardController extends Controller
 {
+    /**
+     * @var array
+     */
+    private $validationRules = [
+        'identifier' => ['required', 'alpha_num'],
+        'set_name' => ['required', 'alpha_num'],
+    ];
+
+    /**
+     * @var string
+     */
+    private $redirectRoute = 'cards.index';
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +28,9 @@ class CardController extends Controller
      */
     public function index()
     {
-        //
+        $sets = auth()->user()->sets();
+
+        return view('card.index', compact('sets'));
     }
 
     /**
@@ -24,7 +40,9 @@ class CardController extends Controller
      */
     public function create()
     {
-        //
+        $card = new Card();
+
+        return view('card.create', compact('card'));
     }
 
     /**
@@ -35,13 +53,24 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate($this->validationRules);
+
+        $card = new Card($data);
+
+        $set = $this->findOrCreateSet($data['set_name']);
+        $card->set_id = $set->id;
+
+        auth()->user()->cards()->save($card);
+
+        flash()->success(__('card.create.success'));
+
+        return redirect()->route($this->redirectRoute);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Card  $card
+     * @param  \App\Models\Card  $card
      * @return \Illuminate\Http\Response
      */
     public function show(Card $card)
@@ -52,34 +81,56 @@ class CardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Card  $card
+     * @param  \App\Models\Card  $card
      * @return \Illuminate\Http\Response
      */
     public function edit(Card $card)
     {
-        //
+        return view('card.edit', compact('card'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Card  $card
+     * @param  \App\Models\Card  $card
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Card $card)
     {
-        //
+        $data = $request->validate($this->validationRules);
+
+        $set = $this->findOrCreateSet($data['set_name']);
+        $card->set_id = $set->id;
+        $card->fill($data);
+
+        auth()->user()->cards()->save($card);
+
+        flash()->success(__('card.edit.success'));
+
+        return redirect()->route($this->redirectRoute);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Card  $card
+     * @param  \App\Models\Card  $card
      * @return \Illuminate\Http\Response
      */
     public function destroy(Card $card)
     {
-        //
+        $card->delete();
+
+        flash()->success(__('card.destroy.success'));
+
+        return redirect()->route($this->redirectRoute);
+    }
+
+    private function findOrCreateSet($setName)
+    {
+        $set = Set::where('name', $setName)->first() ?? new Set(['name' => $setName]);
+        auth()->user()->sets()->save($set);
+
+        return $set;
     }
 }

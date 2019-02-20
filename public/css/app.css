@@ -10660,3 +10660,20 @@ a.text-dark:focus {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.btn.btn-link.btn-delete {
+  margin-top: -2px;
+  padding: 0 7px 1px;
+  color: #ff1a13;
+}
+
+.btn.btn-plain:hover,
+.btn.btn-plain:focus {
+  color: #3490dc;
+  border: 1px solid #b7d7f3;
+  background-color: transparent !important;
+}
+
+.inline {
+  display: inline;
+}
+

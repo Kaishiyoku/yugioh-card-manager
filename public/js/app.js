@@ -49002,6 +49002,21 @@ if (token) {
 //     encrypted: true
 // });
 
+
+$(document).ready(function () {
+  $('[data-confirm]').on('click', function () {
+    var confirmationText = $(this).attr('data-confirm');
+
+    if (_.isEmpty(confirmationText) || confirmationText == 1) {
+      confirmationText = 'Are you sure?';
+    }
+
+    if (!confirm(confirmationText)) {
+      return false;
+    }
+  });
+});
+
 /***/ }),
 
 /***/ "./resources/js/components/ExampleComponent.vue":

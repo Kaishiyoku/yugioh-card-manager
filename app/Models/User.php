@@ -30,6 +30,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Card[] $cards
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Set[] $sets
  */
 class User extends Authenticatable
 {
@@ -52,4 +54,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function sets()
+    {
+        return $this->hasMany(Set::class);
+    }
+
+    public function cards()
+    {
+        return $this->hasMany(Card::class);
+    }
 }
