@@ -17,5 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('cards', 'CardController');
+/* *****************
+ * Logged on users *
+ ***************** */
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/cards/import', 'CardController@showImportForm')->name('cards.show_import_form');
+    Route::post('/cards/import', 'CardController@submitImport')->name('cards.submit_import');
+    Route::resource('cards', 'CardController');
+});

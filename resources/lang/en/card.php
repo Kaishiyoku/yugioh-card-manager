@@ -11,5 +11,9 @@ return [
     'edit' => [
         'title' => 'Edit card',
     ],
+    'show_import_form' => [
+        'title' => 'Import cards',
+        'submit' => 'Import',
+    ],
 
 ];

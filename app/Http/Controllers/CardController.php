@@ -126,9 +126,38 @@ class CardController extends Controller
         return redirect()->route($this->redirectRoute);
     }
 
+    public function showImportForm()
+    {
+        $sampleContent = "# Sample:\nLOD-001\nSDP-001";
+
+        return view('card.show_import_form', compact('sampleContent'));
+    }
+
+    public function submitImport(Request $request)
+    {
+        $cardSetStrings = explode("\n", $request->get('content'));
+
+        array_map(function ($cardSetStr) {
+            list($setIdentifier, $cardIdentifier) = explode('-', $cardSetStr);
+
+            $set = $this->findOrCreateSet($setIdentifier);
+
+            $card = new Card();
+            $card->set_id = $set->id;
+            $card->identifier = $cardIdentifier;
+
+            auth()->user()->cards()->save($card);
+        }, $cardSetStrings);
+
+        flash()->success(__('card.submit_import.success'));
+
+        return redirect()->route($this->redirectRoute);
+    }
+
     private function findOrCreateSet($setName)
     {
-        $set = Set::where('name', $setName)->first() ?? new Set(['name' => $setName]);
+        $set = auth()->user()->sets()->whereName($setName)->first() ?? new Set(['name' => $setName]);
+
         auth()->user()->sets()->save($set);
 
         return $set;

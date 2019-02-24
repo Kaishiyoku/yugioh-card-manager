@@ -147,6 +147,7 @@ return [
     'attributes' => [
         'identifier' => 'Identifier',
         'set_name' => 'Set',
+        'content' => 'Content',
     ],
 
 ];
