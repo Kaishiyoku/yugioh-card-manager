@@ -28,7 +28,7 @@ class CardController extends Controller
      */
     public function index()
     {
-        $sets = auth()->user()->sets();
+        $sets = auth()->user()->sets()->whereHas('cards');
 
         return view('card.index', compact('sets'));
     }

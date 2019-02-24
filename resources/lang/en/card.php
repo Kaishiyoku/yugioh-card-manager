@@ -4,6 +4,7 @@ return [
 
     'index' => [
         'title' => 'Cards',
+        'total' => 'Total',
     ],
     'create' => [
         'title' => 'Add card',
