@@ -12,8 +12,8 @@ class CardController extends Controller
      * @var array
      */
     private $validationRules = [
-        'identifier' => ['required', 'alpha_num'],
-        'set_name' => ['required', 'alpha_num'],
+        'card_identifier' => ['required', 'alpha_num'],
+        'set_identifier' => ['required', 'alpha_num'],
     ];
 
     /**
@@ -55,9 +55,9 @@ class CardController extends Controller
     {
         $data = $request->validate($this->validationRules);
 
-        $card = new Card($data);
+        $card = new Card(['identifier' => $data['card_identifier']]);
 
-        $set = $this->findOrCreateSet($data['set_name']);
+        $set = $this->findOrCreateSet($data['set_identifier']);
         $card->set_id = $set->id;
 
         auth()->user()->cards()->save($card);
@@ -100,9 +100,9 @@ class CardController extends Controller
     {
         $data = $request->validate($this->validationRules);
 
-        $set = $this->findOrCreateSet($data['set_name']);
+        $set = $this->findOrCreateSet($data['set_identifier']);
         $card->set_id = $set->id;
-        $card->fill($data);
+        $card->fill(['identifier' => $data['card_identifier']]);
 
         auth()->user()->cards()->save($card);
 
@@ -154,9 +154,9 @@ class CardController extends Controller
         return redirect()->route($this->redirectRoute);
     }
 
-    private function findOrCreateSet($setName)
+    private function findOrCreateSet($setIdentifier)
     {
-        $set = auth()->user()->sets()->whereName($setName)->first() ?? new Set(['name' => $setName]);
+        $set = auth()->user()->sets()->whereIdentifier($setIdentifier)->first() ?? new Set(['identifier' => $setIdentifier]);
 
         auth()->user()->sets()->save($set);
 

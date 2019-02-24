@@ -21,6 +21,10 @@ use Illuminate\Support\Str;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Set whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Set whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Set whereUpdatedAt($value)
+ * @property int $user_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Set whereUserId($value)
+ * @property string $identifier
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Set whereIdentifier($value)
  */
 class Set extends Model
 {
@@ -30,7 +34,7 @@ class Set extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'identifier',
     ];
 
     /**

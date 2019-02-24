@@ -145,8 +145,8 @@ return [
     */
 
     'attributes' => [
-        'identifier' => 'Identifier',
-        'set_name' => 'Set',
+        'card_identifier' => 'Card identifier',
+        'set_identifier' => 'Set identifier',
         'content' => 'Content',
     ],
 
