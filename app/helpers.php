@@ -30,7 +30,11 @@ if (!function_exists('fetchCardFromSet')) {
      */
     function fetchCardFromSet($setIdentifier, $cardIdentifier)
     {
-        return getYuGiOhCardApiContent("/cards/from_set/{$setIdentifier}-{$cardIdentifier}");
+        $minutes = env('YUGIOH_CARD_API_CACHE_MINUTES');
+
+        return \Illuminate\Support\Facades\Cache::remember("fetchCardFromSet.${setIdentifier}-${cardIdentifier}", $minutes, function () use ($setIdentifier, $cardIdentifier) {
+            return getYuGiOhCardApiContent("/cards/from_set/{$setIdentifier}-{$cardIdentifier}");
+        });
     }
 }
 
@@ -41,7 +45,11 @@ if (!function_exists('fetchSet')) {
      */
     function fetchSet($setIdentifier)
     {
-        return getYuGiOhCardApiContent("/sets/search/{$setIdentifier}");
+        $minutes = env('YUGIOH_CARD_API_CACHE_MINUTES');
+
+        return \Illuminate\Support\Facades\Cache::remember("fetchSet.${setIdentifier}", $minutes, function () use ($setIdentifier) {
+            return getYuGiOhCardApiContent("/sets/search/{$setIdentifier}");
+        });
     }
 }
 
