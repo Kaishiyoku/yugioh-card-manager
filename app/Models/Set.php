@@ -43,7 +43,7 @@ class Set extends Model
      */
     public function setNameAttribute($value)
     {
-        $this->attributes['name'] = Str::upper($value);
+        $this->attributes['name'] = trim(Str::upper($value));
     }
 
     public function cards()

@@ -44,7 +44,7 @@ class Card extends Model
      */
     public function setIdentifierAttribute($value)
     {
-        $this->attributes['identifier'] = Str::upper($value);
+        $this->attributes['identifier'] = trim(Str::upper($value));
     }
 
     public function user()

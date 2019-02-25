@@ -7,5 +7,9 @@ return [
     'update' => 'Save',
     'delete' => 'Delete',
     'none' => 'No entries yet.',
+    'lang' => [
+        'de' => 'DE',
+        'en' => 'EN',
+    ],
 
 ];

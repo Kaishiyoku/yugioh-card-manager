@@ -24,5 +24,9 @@ return [
     'destroy' => [
         'success' => 'Card removed.',
     ],
+    'identifier' => 'Identifier',
+    'title_german' => 'German title',
+    'title_english' => 'English title',
+    'rarity' => 'Rarity',
 
 ];
