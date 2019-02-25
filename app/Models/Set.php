@@ -41,9 +41,9 @@ class Set extends Model
      * @param  string  $value
      * @return void
      */
-    public function setNameAttribute($value)
+    public function setIdentifierAttribute($value)
     {
-        $this->attributes['name'] = trim(Str::upper($value));
+        $this->attributes['identifier'] = trim(Str::upper($value));
     }
 
     public function cards()
