@@ -28,7 +28,7 @@ class CardController extends Controller
      */
     public function index()
     {
-        $sets = auth()->user()->sets()->whereHas('cards')->with('cards')->get();
+        $sets = auth()->user()->sets()->whereHas('cards')->with('cards')->orderBy('identifier')->get();
 
         $sets = $sets->map(function (Set $set) {
             $foundSets = json_decode(fetchSet($set->identifier));
