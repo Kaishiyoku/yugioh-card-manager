@@ -49015,6 +49015,11 @@ $(document).ready(function () {
       return false;
     }
   });
+  $('[data-toggle="tooltip"]').tooltip();
+  $('[data-toggle="tooltip-html"]').tooltip({
+    html: true,
+    template: '<div class="tooltip tooltip-white" role="tooltip"><div class="arrow"></div><div class="tooltip-inner tooltip-inner-html"></div></div>'
+  });
 });
 
 /***/ }),

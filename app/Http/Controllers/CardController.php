@@ -41,6 +41,7 @@ class CardController extends Controller
 
             $set->cards = $set->cards->map(function (Card $card, $i) use ($set) {
                 $card->info = json_decode(fetchCardFromSet($set->identifier, $card->identifier));
+                $card->image_url = getCardImageUrl($set->identifier, $card->identifier);
 
                 return $card;
             });
@@ -104,6 +105,8 @@ class CardController extends Controller
      */
     public function edit(Card $card)
     {
+        $card->image_url = $card->image_url = getCardImageUrl($card->set->identifier, $card->identifier);
+
         return view('card.edit', compact('card'));
     }
 

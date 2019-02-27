@@ -10677,3 +10677,22 @@ a.text-dark:focus {
   display: inline;
 }
 
+.tooltip-inner.tooltip-inner-html {
+  max-width: 350px !important;
+  padding: 0.25rem 0.5rem;
+  color: #fff;
+  text-align: center;
+  background-color: #000;
+  border-radius: 0.25rem;
+}
+
+.tooltip.tooltip-white > .arrow:before {
+  border-top-color: #b3b3b3 !important;
+  border-bottom-color: #b3b3b3 !important;
+}
+
+.tooltip.tooltip-white > .tooltip-inner {
+  background-color: #fff !important;
+  border: 1px solid #b3b3b3;
+}
+

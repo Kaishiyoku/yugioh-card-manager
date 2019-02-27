@@ -53,6 +53,20 @@ if (!function_exists('fetchSet')) {
     }
 }
 
+if (!function_exists('getCardImageUrl')) {
+    /**
+     * @param string $setIdentifier
+     * @param string $cardIdentifier
+     * @return string
+     */
+    function getCardImageUrl($setIdentifier, $cardIdentifier)
+    {
+        $minutes = env('YUGIOH_CARD_API_CACHE_MINUTES');
+
+        return env('YUGIOH_CARD_API_BASE_URL') . "/cards/from_set/{$setIdentifier}-{$cardIdentifier}/image";
+    }
+}
+
 if (!function_exists('getYuGiOhCardApiContent')) {
     /**
      * @param string $uri

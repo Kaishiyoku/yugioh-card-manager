@@ -45,6 +45,7 @@
                     @foreach ($set->cards as $card)
                         <tr>
                             <td>
+                                <img height="20px" src="{{ $card->image_url }}" data-toggle="tooltip-html" title="<img src='{{ $card->image_url }}'/>"/>
                                 {{ $card->identifier }}
                             </td>
                             <td>
