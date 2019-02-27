@@ -31,15 +31,13 @@ class CardController extends Controller
         $sets = auth()->user()->sets()->whereHas('cards')->with('cards')->orderBy('identifier')->get();
 
         $sets = $sets->map(function (Set $set) {
-            $foundSets = json_decode(fetchSet($set->identifier));
+            $foundSet = json_decode(fetchSet($set->identifier));
 
-            if (empty($foundSets)) {
+            if (empty($foundSet)) {
                 return $set;
             }
 
-            if (count($foundSets) >= 0) {
-                $set->info = $foundSets[0];
-            }
+            $set->info = $foundSet;
 
             $set->cards = $set->cards->map(function (Card $card, $i) use ($set) {
                 $card->info = json_decode(fetchCardFromSet($set->identifier, $card->identifier));

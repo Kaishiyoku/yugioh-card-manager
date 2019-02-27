@@ -48,7 +48,7 @@ if (!function_exists('fetchSet')) {
         $minutes = env('YUGIOH_CARD_API_CACHE_MINUTES');
 
         return \Illuminate\Support\Facades\Cache::remember("fetchSet.${setIdentifier}", $minutes, function () use ($setIdentifier) {
-            return getYuGiOhCardApiContent("/sets/search/{$setIdentifier}");
+            return getYuGiOhCardApiContent("/sets/{$setIdentifier}");
         });
     }
 }
