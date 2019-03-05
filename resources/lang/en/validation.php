@@ -149,6 +149,11 @@ return [
         'card_identifier' => 'Card identifier',
         'set_identifier' => 'Set identifier',
         'content' => 'Content',
+        'email' => 'E-Mail Address',
+        'password' => 'Password',
+        'password_confirmation' => 'Confirm Password',
+        'remember_me' => 'Remember Me',
+        'name' => 'Name',
     ],
 
 ];

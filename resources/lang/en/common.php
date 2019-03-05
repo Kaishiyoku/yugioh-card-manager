@@ -17,5 +17,9 @@ return [
         'login' => 'Login',
         'register' => 'Register',
     ],
+    'you_are_logged_in' => 'You are logged in!',
+    'login' => 'Login',
+    'forgot_password' => 'Forgot Your Password?',
+    'register' => 'Register',
 
 ];

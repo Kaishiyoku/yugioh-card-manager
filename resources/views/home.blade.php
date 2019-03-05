@@ -13,7 +13,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    {{ __('common.you_are_logged_in') }}
                 </div>
             </div>
         </div>
