@@ -61,8 +61,6 @@ if (!function_exists('getCardImageUrl')) {
      */
     function getCardImageUrl($setIdentifier, $cardIdentifier)
     {
-        $minutes = now()->addMinutes(env('YUGIOH_CARD_API_CACHE_MINUTES'));
-
         return env('YUGIOH_CARD_API_BASE_URL') . "/cards/from_set/{$setIdentifier}-{$cardIdentifier}/image";
     }
 }
