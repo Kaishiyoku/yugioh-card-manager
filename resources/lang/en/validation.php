@@ -145,6 +145,7 @@ return [
     */
 
     'attributes' => [
+        'identifier' => 'Identifier',
         'card_identifier' => 'Card identifier',
         'set_identifier' => 'Set identifier',
         'content' => 'Content',

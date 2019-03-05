@@ -26,5 +26,6 @@ Route::group(['middleware' => 'menus'], function () {
         Route::get('/cards/import', 'CardController@showImportForm')->name('cards.show_import_form');
         Route::post('/cards/import', 'CardController@submitImport')->name('cards.submit_import');
         Route::resource('cards', 'CardController');
+        Route::resource('sets', 'SetController')->only(['edit', 'update']);
     });
 });

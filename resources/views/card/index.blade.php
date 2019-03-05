@@ -20,6 +20,10 @@
 
                 <small class="text-muted">
                     {{ $set->cards()->count() }}
+
+                    <span class="float-right">
+                        {{ Html::linkRoute('sets.edit', __('common.edit'), $set) }}
+                    </span>
                 </small>
             </h5>
 
