@@ -11,18 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::group(['middleware' => 'menus'], function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
-Auth::routes();
+    Auth::routes();
 
-/* *****************
- * Logged on users *
- ***************** */
-Route::group(['middleware' => ['auth']], function () {
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/cards/import', 'CardController@showImportForm')->name('cards.show_import_form');
-    Route::post('/cards/import', 'CardController@submitImport')->name('cards.submit_import');
-    Route::resource('cards', 'CardController');
+    /* *****************
+     * Logged on users *
+     ***************** */
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/home', 'HomeController@index')->name('home');
+        Route::get('/cards/import', 'CardController@showImportForm')->name('cards.show_import_form');
+        Route::post('/cards/import', 'CardController@submitImport')->name('cards.submit_import');
+        Route::resource('cards', 'CardController');
+    });
 });

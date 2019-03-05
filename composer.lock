@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c63fcf3a2837fde87ff6cf936560d56",
+    "content-hash": "c3198f4d7e81251678208b3889ad013d",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -313,6 +313,53 @@
             "time": "2018-03-08T01:11:30+00:00"
         },
         {
+            "name": "ezyang/htmlpurifier",
+            "version": "v4.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ezyang/htmlpurifier.git",
+                "reference": "d85d39da4576a6934b72480be6978fb10c860021"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/d85d39da4576a6934b72480be6978fb10c860021",
+                "reference": "d85d39da4576a6934b72480be6978fb10c860021",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "require-dev": {
+                "simpletest/simpletest": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HTMLPurifier": "library/"
+                },
+                "files": [
+                    "library/HTMLPurifier.composer.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Edward Z. Yang",
+                    "email": "admin@htmlpurifier.org",
+                    "homepage": "http://ezyang.com"
+                }
+            ],
+            "description": "Standards compliant HTML filter written in PHP",
+            "homepage": "http://htmlpurifier.org/",
+            "keywords": [
+                "html"
+            ],
+            "time": "2018-02-23T01:58:20+00:00"
+        },
+        {
             "name": "fideloper/proxy",
             "version": "4.1.0",
             "source": {
@@ -516,6 +563,95 @@
                 "user"
             ],
             "time": "2019-03-05T09:10:23+00:00"
+        },
+        {
+            "name": "kaishiyoku/laravel-html-purifier",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kaishiyoku/laravel-html-purifier.git",
+                "reference": "071c809a913b92f8890d74916231b54bea92dd18"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kaishiyoku/laravel-html-purifier/zipball/071c809a913b92f8890d74916231b54bea92dd18",
+                "reference": "071c809a913b92f8890d74916231b54bea92dd18",
+                "shasum": ""
+            },
+            "require": {
+                "ezyang/htmlpurifier": "4.10.0",
+                "illuminate/support": "5.*",
+                "php": ">=7.1.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Kaishiyoku\\HtmlPurifier\\HtmlPurifierServiceProvider"
+                    ],
+                    "aliases": {
+                        "HtmlPurifier": "Kaishiyoku\\HtmlPurifier\\Facades\\HtmlPurifier"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Kaishiyoku\\": "src/Kaishiyoku"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Wiedel",
+                    "email": "dev@andreas-wiedel.de"
+                }
+            ],
+            "description": "A HTML filter using htmlpurifier with additional HTML5 rules.",
+            "time": "2018-12-18T13:27:07+00:00"
+        },
+        {
+            "name": "kaishiyoku/laravel-menu",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kaishiyoku/laravel-menu.git",
+                "reference": "0a1aa772f19002d354f0c338e603d98c49d10a7a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kaishiyoku/laravel-menu/zipball/0a1aa772f19002d354f0c338e603d98c49d10a7a",
+                "reference": "0a1aa772f19002d354f0c338e603d98c49d10a7a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "5.*",
+                "illuminate/routing": "5.*",
+                "illuminate/support": "5.*",
+                "kaishiyoku/laravel-html-purifier": "^2.0.0",
+                "laravelcollective/html": "5.*",
+                "php": ">=7.1.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kaishiyoku\\": "src/Kaishiyoku"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kaishiyoku",
+                    "email": "dev@andreas-wiedel.de"
+                }
+            ],
+            "description": "Create menus for Laravel 5 with css-class highlighting support",
+            "time": "2018-12-18T13:17:25+00:00"
         },
         {
             "name": "laracasts/flash",

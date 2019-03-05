@@ -11,5 +11,11 @@ return [
         'de' => 'DE',
         'en' => 'EN',
     ],
+    'nav' => [
+        'home' => 'Home',
+        'cards' => 'Cards',
+        'login' => 'Login',
+        'register' => 'Register',
+    ],
 
 ];

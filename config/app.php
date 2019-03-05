@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Kaishiyoku\Menu\MenuServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -228,6 +229,7 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Menu' => Kaishiyoku\Menu\Facades\Menu::class,
 
     ],
 
