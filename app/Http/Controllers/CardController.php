@@ -21,6 +21,11 @@ class CardController extends Controller
      */
     private $redirectRoute = 'cards.index';
 
+    public function __construct()
+    {
+        $this->authorizeResource(Card::class);
+    }
+
     /**
      * Display a listing of the resource.
      *

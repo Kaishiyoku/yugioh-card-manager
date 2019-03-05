@@ -19,6 +19,11 @@ class SetController extends Controller
      */
     private $redirectRoute = 'cards.index';
 
+    public function __construct()
+    {
+        $this->authorizeResource(Set::class);
+    }
+
     /**
      * Display a listing of the resource.
      *

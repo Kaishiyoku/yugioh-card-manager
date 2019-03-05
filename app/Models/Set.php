@@ -46,6 +46,11 @@ class Set extends Model
         $this->attributes['identifier'] = trim(Str::upper($value));
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function cards()
     {
         return $this->hasMany(Card::class)->orderBy('identifier');
