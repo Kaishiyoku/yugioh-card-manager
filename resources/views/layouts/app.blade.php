@@ -79,6 +79,14 @@
                 @yield('content')
             </div>
         </main>
+
+        <footer>
+            <div class="container text-muted pb-2">
+                <small>
+                    v{{ env('APP_VERSION') }}
+                </small>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
