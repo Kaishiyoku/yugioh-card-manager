@@ -30,7 +30,7 @@ if (!function_exists('fetchCardFromSet')) {
      */
     function fetchCardFromSet($setIdentifier, $cardIdentifier)
     {
-        $minutes = env('YUGIOH_CARD_API_CACHE_MINUTES');
+        $minutes = now()->addMinutes(env('YUGIOH_CARD_API_CACHE_MINUTES'));
 
         return \Illuminate\Support\Facades\Cache::remember("fetchCardFromSet.${setIdentifier}-${cardIdentifier}", $minutes, function () use ($setIdentifier, $cardIdentifier) {
             return getYuGiOhCardApiContent("/cards/from_set/{$setIdentifier}-{$cardIdentifier}");
@@ -45,7 +45,7 @@ if (!function_exists('fetchSet')) {
      */
     function fetchSet($setIdentifier)
     {
-        $minutes = env('YUGIOH_CARD_API_CACHE_MINUTES');
+        $minutes = now()->addMinutes(env('YUGIOH_CARD_API_CACHE_MINUTES'));
 
         return \Illuminate\Support\Facades\Cache::remember("fetchSet.${setIdentifier}", $minutes, function () use ($setIdentifier) {
             return getYuGiOhCardApiContent("/sets/{$setIdentifier}");
@@ -61,7 +61,7 @@ if (!function_exists('getCardImageUrl')) {
      */
     function getCardImageUrl($setIdentifier, $cardIdentifier)
     {
-        $minutes = env('YUGIOH_CARD_API_CACHE_MINUTES');
+        $minutes = now()->addMinutes(env('YUGIOH_CARD_API_CACHE_MINUTES'));
 
         return env('YUGIOH_CARD_API_BASE_URL') . "/cards/from_set/{$setIdentifier}-{$cardIdentifier}/image";
     }
